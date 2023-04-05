@@ -1,12 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BooksForLess.API.Models;
+using BooksForLess.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BooksForLess.API.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult GetAllCategories()
+        private readonly ICategoriesServiceQueries categoriesService;
+
+        public CategoryController(ICategoriesServiceQueries categoriesService)
         {
-            return View();
+            this.categoriesService = categoriesService;
+        }
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var categories = await categoriesService.GetAllCategories();
+
+            List<Category> result = new List<Category>();
+            
+            foreach (var category in categories)
+            {
+                result.Add(new Category { 
+                    Id = category.Id,
+                    Name = category.Name,
+                    DisplayOrder = category.DisplayOrder,
+                });
+            }
+            return View(result);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BooksForLess.Models
+namespace BooksForLess.API.Models
 {
     public class Category
     {

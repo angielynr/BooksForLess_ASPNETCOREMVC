@@ -1,1 +1,8 @@
-﻿<h1>Categories</h1>
+﻿@model List<Category>
+<h1>Categories</h1>
+
+@foreach(var obj in Model){
+    <p>@obj.Id</p>
+    <p>@obj.Name</p>
+    <p>@obj.DisplayOrder</p>
+}
