@@ -2,7 +2,6 @@
 using BooksForLess.Services.Interfaces;
 using BooksForLess.Services.ServiceDTO;
 
-
 namespace BooksForLess.Services.Commands
 {
     public partial class CategoriesServiceCommands : ICategoriesServiceCommands

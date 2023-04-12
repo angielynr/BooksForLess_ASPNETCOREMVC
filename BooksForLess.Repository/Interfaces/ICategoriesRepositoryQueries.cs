@@ -5,7 +5,7 @@ namespace BooksForLess.Repository.Interfaces
 {
     public interface ICategoriesRepositoryQueries
     {
-        Task<List<Categories>> GetAllCategories();
+        Task<List<Category>> GetAllCategories();
 
         Task<AllCategoriesResponse> GetCategoryById(int id);
     }

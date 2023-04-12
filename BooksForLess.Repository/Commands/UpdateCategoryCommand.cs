@@ -9,9 +9,24 @@ namespace BooksForLess.Repository.Commands
 {
     public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
     {
-        public Task<CategoriesResponse> UpdateCategory(Categories categories)
+        public async Task<CategoriesResponse> UpdateCategory(Category categories)
         {
-            throw new NotImplementedException();
+            var response = new CategoriesResponse();
+            var isIdExisting = await this.appDbContext.categories.FirstOrDefaultAsync(c => c.Id == categories.Id);
+
+            if (isIdExisting == null)
+            {
+                return null;
+            }
+
+            isIdExisting.Name= categories.Name;
+            isIdExisting.DisplayOrder = categories.DisplayOrder;
+
+            response.ResultMessage = "Success!";
+
+            await SaveChangesAsync();
+
+            return response;
         }
     }
 }

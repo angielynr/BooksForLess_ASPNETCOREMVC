@@ -11,6 +11,6 @@ namespace BooksForLess.Repository.DataContext
 
         }
 
-        public DbSet<Categories> categories { get; set; }
+        public DbSet<Category> categories { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace BooksForLess.Repository.Commands
 {
     public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
     {
-        public async Task<CategoriesResponse> AddCategory(Categories categories)
+        public async Task<CategoriesResponse> AddCategory(Category categories)
         {
             var categoriesList = await this.appDbContext.categories.ToListAsync();
             var response = new CategoriesResponse();

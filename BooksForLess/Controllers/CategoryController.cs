@@ -83,5 +83,25 @@ namespace BooksForLess.API.Controllers
 
             return View(response);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                var categoryDTO = new CategoryRequestServiceDTO()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    DisplayOrder = category.DisplayOrder,
+                };
+
+                var response = await categoriesServiceCommands.UpdateCategory(categoryDTO);
+
+                return RedirectToAction("GetAllCategories");
+            }
+
+            return View();
+        }
     }
 }

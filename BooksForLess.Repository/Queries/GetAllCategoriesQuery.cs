@@ -12,7 +12,7 @@ namespace BooksForLess.Repository.Queries
 {
     public partial class CategeriesRepositoryQueries : ICategoriesRepositoryQueries
     {
-        public async Task<List<Categories>> GetAllCategories()
+        public async Task<List<Category>> GetAllCategories()
         {
             return await appDbContext.categories.ToListAsync();
         }

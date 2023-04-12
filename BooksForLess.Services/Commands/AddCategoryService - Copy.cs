@@ -8,17 +8,20 @@ namespace BooksForLess.Services.Commands
 {
     public partial class CategoriesServiceCommands : ICategoriesServiceCommands
     {
-        public async Task<AllCategoriesResponseDTO> AddCategory(CategoryRequestServiceDTO category)
+
+        public async Task<AllCategoriesResponseDTO> UpdateCategory(CategoryRequestServiceDTO category)
         {
-            var categories = await this.categoriesRepositoryCommands.AddCategory(new Category()
+            var response = new AllCategoriesResponseDTO();
+
+            var updatedCategory = await this.categoriesRepositoryCommands.UpdateCategory(new Category()
             {
                 Id= category.Id,
                 Name= category.Name,
                 DisplayOrder= category.DisplayOrder,
             });
 
-            var response = new AllCategoriesResponseDTO() 
-            { 
+            response = new AllCategoriesResponseDTO()
+            {
                 Id = category.Id,
                 Name = category.Name,
                 DisplayOrder = category.DisplayOrder,
