@@ -17,11 +17,12 @@ namespace BooksForLess.Services.Commands
                 DisplayOrder= category.DisplayOrder,
             });
 
-            var response = new AllCategoriesResponseDTO() 
-            { 
+            var response = new AllCategoriesResponseDTO()
+            {
                 Id = category.Id,
                 Name = category.Name,
                 DisplayOrder = category.DisplayOrder,
+                ResultMessage = "Success!"
             };
 
             return response;

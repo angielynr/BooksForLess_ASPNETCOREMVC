@@ -12,5 +12,6 @@ namespace BooksForLess.Services.Interfaces
     { 
         Task<AllCategoriesResponseDTO> AddCategory(CategoryRequestServiceDTO category);
         Task<AllCategoriesResponseDTO> UpdateCategory(CategoryRequestServiceDTO category);
+        Task<AllCategoriesResponseDTO> DeleteCategory(int id);
     }
 }

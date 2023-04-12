@@ -25,6 +25,7 @@ namespace BooksForLess.Services.Commands
                 Id = category.Id,
                 Name = category.Name,
                 DisplayOrder = category.DisplayOrder,
+                ResultMessage = "Success!"
             };
 
             return response;

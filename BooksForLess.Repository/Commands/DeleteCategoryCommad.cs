@@ -9,9 +9,23 @@ namespace BooksForLess.Repository.Commands
 {
     public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
     {
-        public Task<CategoriesResponse> DeleteCategoryById(int id)
+        public async Task<CategoriesResponse> DeleteCategoryById(int id)
         {
-            throw new NotImplementedException();
+            var response = new CategoriesResponse();
+
+            var result = await this.appDbContext.categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            response.ResultMessage = "Sucess!";
+
+            appDbContext.Remove(result);
+            await SaveChangesAsync();
+
+            return response;
         }
     }
 }

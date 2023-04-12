@@ -103,5 +103,43 @@ namespace BooksForLess.API.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var category = await this.categoriesServiceQueries.GetCategoriesById(id);
+
+            var response = new Category()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                DisplayOrder = category.DisplayOrder,
+            };
+
+
+            if (response == null)
+            {
+                return NotFound(response);
+            }
+
+            return View(response);
+        }
+
+        [HttpPost, ActionName("DeleteCategory")]
+        public async Task<IActionResult> DeleteCategoryPOST(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await categoriesServiceCommands.DeleteCategory(id);
+
+                return RedirectToAction("GetAllCategories");
+            }
+
+            return View();
+        }
     }
 }
