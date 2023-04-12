@@ -9,11 +9,13 @@ namespace BooksForLess.API.Controllers
     {
         private readonly ICategoriesServiceQueries categoriesService;
         private readonly ICategoriesServiceCommands categoriesServiceCommands;
+        private readonly ICategoriesServiceQueries categoriesServiceQueries;
 
-        public CategoryController(ICategoriesServiceQueries categoriesService, ICategoriesServiceCommands categoriesServiceCommands)
+        public CategoryController(ICategoriesServiceQueries categoriesService, ICategoriesServiceCommands categoriesServiceCommands, ICategoriesServiceQueries categoriesServiceQueries)
         {
             this.categoriesService = categoriesService;
             this.categoriesServiceCommands = categoriesServiceCommands;
+            this.categoriesServiceQueries = categoriesServiceQueries;
         }
         public async Task<IActionResult> GetAllCategories()
         {
@@ -57,9 +59,29 @@ namespace BooksForLess.API.Controllers
             return View();
         }
 
-        public async Task<IActionResult> EditCategory()
+        public async Task<IActionResult> EditCategory(int id)
         {
-            return View();
+            if(id==null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var category = await this.categoriesServiceQueries.GetCategoriesById(id);
+
+            var response = new Category()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                DisplayOrder =category.DisplayOrder,
+            };
+           
+
+            if(response == null)
+            {
+                return NotFound(response);
+            }
+
+            return View(response);
         }
     }
 }
