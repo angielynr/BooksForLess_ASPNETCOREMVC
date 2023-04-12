@@ -1,5 +1,6 @@
 ﻿using BooksForLess.API.Models;
 using BooksForLess.Services.Interfaces;
+using BooksForLess.Services.ServiceDTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksForLess.API.Controllers
@@ -7,10 +8,12 @@ namespace BooksForLess.API.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoriesServiceQueries categoriesService;
+        private readonly ICategoriesServiceCommands categoriesServiceCommands;
 
-        public CategoryController(ICategoriesServiceQueries categoriesService)
+        public CategoryController(ICategoriesServiceQueries categoriesService, ICategoriesServiceCommands categoriesServiceCommands)
         {
             this.categoriesService = categoriesService;
+            this.categoriesServiceCommands = categoriesServiceCommands;
         }
         public async Task<IActionResult> GetAllCategories()
         {
@@ -27,6 +30,26 @@ namespace BooksForLess.API.Controllers
                 });
             }
             return View(result);
+        }
+
+        public async Task<IActionResult> CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(Category category)
+        {
+            var categoryDTO = new CategoryServiceDTO()
+            {
+                Id= category.Id,
+                Name = category.Name,
+                DisplayOrder = category.DisplayOrder,
+            };
+
+            var response = await categoriesServiceCommands.AddCategory(categoryDTO);
+
+            return RedirectToAction("GetAllCategories");
         }
     }
 }

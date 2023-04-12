@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace BooksForLess.Repository.RepositoryDTO
 {
-    public class CategoriesRepositoryDTO
+    public class CategoriesResponse
     {
-        public int Id { get; set; }
-
-        public string? Name { get; set; }
-        public string? DisplayOrder { get; set; }
+        public string? ResultMessage { get; set; }
     }
 }

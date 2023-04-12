@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BooksForLess.API.Models
+namespace BooksForLess.Services.ServiceDTO
 {
-    public class Category
+    public class CategoryServiceDTO
     {
         [Key]
         public int Id { get; set; }

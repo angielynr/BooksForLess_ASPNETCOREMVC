@@ -1,37 +1,32 @@
 ﻿@model List<Category>
-<h1>Categories</h1>
 
-@foreach(var obj in Model){
-    <p></p>
-    <p>@obj.Name</p>
-    <p>@obj.DisplayOrder</p>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Display Order</th>
-            </tr>
-        </thead>
+<div class="container">
+    <div class="row pt-4 pb-2">
+        <div class="col-6">
+            <h2 class="text-primary"> Category List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Category</a>
+        </div>
+    </div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Display Order</th>
+        </tr>
+    </thead>
         <tbody>
+        @foreach (var obj in Model)
+        {
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">@obj.Id</th>
+                <td>@obj.Name</td>
+                <td>@obj.DisplayOrder</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
+        }
         </tbody>
     </table>
-}
+</div>

@@ -1,5 +1,7 @@
-﻿using BooksForLess.Repository.Interfaces;
+﻿using BooksForLess.Repository.Commands;
+using BooksForLess.Repository.Interfaces;
 using BooksForLess.Repository.Queries;
+using BooksForLess.Services.Commands;
 using BooksForLess.Services.Interfaces;
 using BooksForLess.Services.Queries;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +14,9 @@ namespace BooksForLess.Services
         {
 
             services.AddScoped<ICategoriesRepositoryQueries, CategeriesRepositoryQueries>();
+            services.AddScoped<ICategoriesRepositoryCommands, CategeriesRepositoryCommands>();
             services.AddScoped<ICategoriesServiceQueries, CategoriesServiceQueries>();
+            services.AddScoped<ICategoriesServiceCommands, CategoriesServiceCommands>();
 
             return services;
         }
