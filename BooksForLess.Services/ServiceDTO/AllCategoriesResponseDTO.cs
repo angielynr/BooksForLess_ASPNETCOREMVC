@@ -1,6 +1,6 @@
 ﻿namespace BooksForLess.Services.ServiceDTO
 {
-    public class CategoriesResponseDTO
+    public class AllCategoriesResponseDTO
     {
         public int Id { get; set; }
         public string? Name { get; set; }

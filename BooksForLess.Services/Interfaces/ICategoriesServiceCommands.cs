@@ -10,6 +10,6 @@ namespace BooksForLess.Services.Interfaces
 {
     public interface ICategoriesServiceCommands
     { 
-        Task<CategoriesResponse> AddCategory(CategoryServiceDTO category);
+        Task<AllCategoriesResponseDTO> AddCategory(CategoryRequestServiceDTO category);
     }
 }

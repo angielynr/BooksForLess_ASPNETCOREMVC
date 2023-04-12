@@ -40,16 +40,26 @@ namespace BooksForLess.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory(Category category)
         {
-            var categoryDTO = new CategoryServiceDTO()
+            if (ModelState.IsValid)
             {
-                Id= category.Id,
-                Name = category.Name,
-                DisplayOrder = category.DisplayOrder,
-            };
+                var categoryDTO = new CategoryRequestServiceDTO()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    DisplayOrder = category.DisplayOrder,
+                };
 
-            var response = await categoriesServiceCommands.AddCategory(categoryDTO);
+                var response = await categoriesServiceCommands.AddCategory(categoryDTO);
 
             return RedirectToAction("GetAllCategories");
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> EditCategory()
+        {
+            return View();
         }
     }
 }

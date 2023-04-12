@@ -6,5 +6,8 @@ namespace BooksForLess.Repository.Interfaces
     public interface ICategoriesRepositoryCommands
     {
         Task<CategoriesResponse> AddCategory(Categories categories);
+
+        Task<CategoriesResponse> UpdateCategory(Categories categories);
+
     }
 }

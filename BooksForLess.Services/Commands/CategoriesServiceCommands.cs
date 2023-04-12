@@ -5,28 +5,15 @@ using BooksForLess.Services.ServiceDTO;
 
 namespace BooksForLess.Services.Commands
 {
-    public class CategoriesServiceCommands : ICategoriesServiceCommands
+    public partial class CategoriesServiceCommands : ICategoriesServiceCommands
     {
         private readonly ICategoriesRepositoryCommands categoriesRepositoryCommands;
+        private readonly ICategoriesRepositoryQueries categoriesRepositoryQueries;
 
-        public CategoriesServiceCommands(ICategoriesRepositoryCommands categoriesRepositoryCommands)
+        public CategoriesServiceCommands(ICategoriesRepositoryCommands categoriesRepositoryCommands, ICategoriesRepositoryQueries categoriesRepositoryQueries)
         {
             this.categoriesRepositoryCommands = categoriesRepositoryCommands;
-        }
-        public async Task<CategoriesResponse> AddCategory(CategoryServiceDTO category)
-        {
-            var response = new CategoriesResponse();
-
-            var categories = await this.categoriesRepositoryCommands.AddCategory(new Repository.Entity.Categories()
-            {
-                Id= category.Id,
-                Name= category.Name,
-                DisplayOrder= category.DisplayOrder,
-            });
-
-            response.ResultMessage = "Success!";
-
-            return response;
+            this.categoriesRepositoryQueries = categoriesRepositoryQueries;
         }
     }
 }

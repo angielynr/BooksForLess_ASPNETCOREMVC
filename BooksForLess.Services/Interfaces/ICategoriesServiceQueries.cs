@@ -9,6 +9,8 @@ namespace BooksForLess.Services.Interfaces
 {
     public interface ICategoriesServiceQueries
     { 
-        Task<List<CategoriesResponseDTO>> GetAllCategories();
+        Task<List<AllCategoriesResponseDTO>> GetAllCategories();
+
+        Task<AllCategoriesResponseDTO> GetCategoriesById(int id);
     }
 }

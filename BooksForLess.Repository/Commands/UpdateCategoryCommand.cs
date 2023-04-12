@@ -3,21 +3,15 @@ using BooksForLess.Repository.DataContext;
 using BooksForLess.Repository.Entity;
 using BooksForLess.Repository.Interfaces;
 using BooksForLess.Repository.RepositoryDTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksForLess.Repository.Commands
 {
     public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
     {
-        private readonly AppDbContext appDbContext;
-
-        public CategeriesRepositoryCommands(AppDbContext appDbContext)
+        public Task<CategoriesResponse> UpdateCategory(Categories categories)
         {
-            this.appDbContext = appDbContext;
-        }
-
-        private async Task SaveChangesAsync()
-        {
-            await this.appDbContext.SaveChangesAsync();
+            throw new NotImplementedException();
         }
     }
 }
