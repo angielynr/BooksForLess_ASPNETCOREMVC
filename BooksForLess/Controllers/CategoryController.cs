@@ -53,6 +53,8 @@ namespace BooksForLess.API.Controllers
 
                 var response = await categoriesServiceCommands.AddCategory(categoryDTO);
 
+                TempData["success"] = "Category created successfully";
+
             return RedirectToAction("GetAllCategories");
             }
 
@@ -98,6 +100,8 @@ namespace BooksForLess.API.Controllers
 
                 var response = await categoriesServiceCommands.UpdateCategory(categoryDTO);
 
+                TempData["success"] = "Category updated successfully";
+
                 return RedirectToAction("GetAllCategories");
             }
 
@@ -135,6 +139,8 @@ namespace BooksForLess.API.Controllers
             if (ModelState.IsValid)
             {
                 var response = await categoriesServiceCommands.DeleteCategory(id);
+
+                TempData["success"] = "Category deleted successfully";
 
                 return RedirectToAction("GetAllCategories");
             }
