@@ -10,6 +10,7 @@ namespace BooksForLess.Services.Commands
         {
             var result = await this.categoriesRepository.GetCategoryById(id);
 
+
             if (result == null)
             {
                 return null;
