@@ -6,9 +6,9 @@ namespace BooksForLess.Repository.Commands
 {
     public partial class CategoriesRepository : ICategoriesRepository
     {
-        public async Task<CategoriesResponse> DeleteCategoryById(int id)
+        public async Task<CustomResponse> DeleteCategoryById(int id)
         {
-            var response = new CategoriesResponse();
+            var response = new CustomResponse();
 
             var result = await this.appDbContext.categories.FirstOrDefaultAsync(c => c.Id == id);
 
