@@ -1,22 +1,16 @@
-﻿using BooksForLess.Repository.Interfaces;
-using BooksForLess.Services.Interfaces;
+﻿using BooksForLess.Services.Interfaces;
 using BooksForLess.Services.ServiceDTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BooksForLess.Services.Queries
+namespace BooksForLess.Services.Commands
 {
-    public partial class CategoriesServiceQueries : ICategoriesServiceQueries
+    public partial class CategoriesService : ICategoriesService
     {
         public async Task<List<AllCategoriesResponseDTO>> GetAllCategories()
         {
             var categories = await categoriesRepository.GetAllCategories();
             List<AllCategoriesResponseDTO> result = new List<AllCategoriesResponseDTO>();
-            
-            if(categories == null)
+
+            if (categories == null)
             {
                 return null;
             }
@@ -25,9 +19,9 @@ namespace BooksForLess.Services.Queries
             {
                 result.Add(new AllCategoriesResponseDTO()
                 {
-                    Id= category.Id,
-                    Name= category.Name,
-                    DisplayOrder= category.DisplayOrder,
+                    Id = category.Id,
+                    Name = category.Name,
+                    DisplayOrder = category.DisplayOrder,
                 });
             }
 
@@ -35,3 +29,4 @@ namespace BooksForLess.Services.Queries
         }
     }
 }
+

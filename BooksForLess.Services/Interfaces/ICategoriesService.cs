@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BooksForLess.Services.ServiceDTO;
+﻿using BooksForLess.Services.ServiceDTO;
 
 namespace BooksForLess.Services.Interfaces
 {
-    public interface ICategoriesServiceCommands
-    { 
+    public interface ICategoriesService
+    {
+        Task<List<AllCategoriesResponseDTO>> GetAllCategories();
+
+        Task<AllCategoriesResponseDTO> GetCategoriesById(int id);
         Task<AllCategoriesResponseDTO> AddCategory(CategoryRequestServiceDTO category);
         Task<AllCategoriesResponseDTO> UpdateCategory(CategoryRequestServiceDTO category);
         Task<AllCategoriesResponseDTO> DeleteCategory(int id);

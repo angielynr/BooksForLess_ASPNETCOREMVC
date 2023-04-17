@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace BooksForLess.Services.ServiceDTO
+﻿namespace BooksForLess.Services.ServiceDTO
 {
     public class CategoryRequestServiceDTO
     {

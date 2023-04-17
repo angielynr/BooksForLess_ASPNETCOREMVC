@@ -1,13 +1,10 @@
-﻿using Azure;
-using BooksForLess.Repository.DataContext;
-using BooksForLess.Repository.Entity;
-using BooksForLess.Repository.Interfaces;
+﻿using BooksForLess.Repository.Interfaces;
 using BooksForLess.Repository.RepositoryDTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace BooksForLess.Repository.Commands
 {
-    public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
+    public partial class CategoriesRepository : ICategoriesRepository
     {
         public async Task<CategoriesResponse> DeleteCategoryById(int id)
         {

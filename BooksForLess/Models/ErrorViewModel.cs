@@ -1,4 +1,4 @@
-namespace BooksForLess.API.Models
+namespace BooksForLess.Web.Models
 {
     public class ErrorViewModel
     {

@@ -1,18 +1,16 @@
-﻿using BooksForLess.Repository.Entity;
-using BooksForLess.Repository.RepositoryDTO;
-using BooksForLess.Services.Interfaces;
+﻿using BooksForLess.Services.Interfaces;
 using BooksForLess.Services.ServiceDTO;
 
 
 namespace BooksForLess.Services.Commands
 {
-    public partial class CategoriesServiceCommands : ICategoriesServiceCommands
+    public partial class CategoriesService : ICategoriesService
     {
         public async Task<AllCategoriesResponseDTO> DeleteCategory(int id)
         {
             var response = new AllCategoriesResponseDTO();
 
-            var result = await this.categoriesRepositoryCommands.DeleteCategoryById(id);
+            var result = await this.categoriesRepository.DeleteCategoryById(id);
 
             if (result == null)
             {

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksForLess.API", "BooksForLess\BooksForLess.API.csproj", "{677240C0-C874-451A-BE8F-8D6747574370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksForLess.Web", "BooksForLess\BooksForLess.Web.csproj", "{677240C0-C874-451A-BE8F-8D6747574370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksForLess.Repository", "BooksForLess.Repository\BooksForLess.Repository.csproj", "{1A729828-A2B8-42B3-9F63-01E91FF1F83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksForLess.Repository", "BooksForLess.Repository\BooksForLess.Repository.csproj", "{1A729828-A2B8-42B3-9F63-01E91FF1F83B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksForLess.Services", "BooksForLess.Services\BooksForLess.Services.csproj", "{E22CB871-E780-4C7F-9B00-09754E45E264}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksForLess.Services", "BooksForLess.Services\BooksForLess.Services.csproj", "{E22CB871-E780-4C7F-9B00-09754E45E264}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

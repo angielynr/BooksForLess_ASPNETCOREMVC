@@ -3,6 +3,7 @@ using BooksForLess.Repository.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksForLess.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230417101530_addCategoryProductTables")]
+    partial class addCategoryProductTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,13 +53,13 @@ namespace BooksForLess.Repository.Migrations
                         new
                         {
                             Id = 2,
-                            DisplayOrder = "2",
+                            DisplayOrder = "1",
                             Name = "Philosophy"
                         },
                         new
                         {
                             Id = 3,
-                            DisplayOrder = "3",
+                            DisplayOrder = "1",
                             Name = "Romance"
                         });
                 });

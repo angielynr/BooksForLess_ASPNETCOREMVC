@@ -1,31 +1,28 @@
-﻿using BooksForLess.API.Models;
-using BooksForLess.Services.Interfaces;
+﻿using BooksForLess.Services.Interfaces;
 using BooksForLess.Services.ServiceDTO;
+using BooksForLess.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BooksForLess.API.Controllers
+namespace BooksForLess.Web.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoriesServiceQueries categoriesService;
-        private readonly ICategoriesServiceCommands categoriesServiceCommands;
-        private readonly ICategoriesServiceQueries categoriesServiceQueries;
+        private readonly ICategoriesService categoriesService;
 
-        public CategoryController(ICategoriesServiceQueries categoriesService, ICategoriesServiceCommands categoriesServiceCommands, ICategoriesServiceQueries categoriesServiceQueries)
+        public CategoryController(ICategoriesService categoriesService)
         {
             this.categoriesService = categoriesService;
-            this.categoriesServiceCommands = categoriesServiceCommands;
-            this.categoriesServiceQueries = categoriesServiceQueries;
         }
         public async Task<IActionResult> GetAllCategories()
         {
             var categories = await categoriesService.GetAllCategories();
 
             List<Category> result = new List<Category>();
-            
+
             foreach (var category in categories)
             {
-                result.Add(new Category { 
+                result.Add(new Category
+                {
                     Id = category.Id,
                     Name = category.Name,
                     DisplayOrder = category.DisplayOrder,
@@ -51,11 +48,11 @@ namespace BooksForLess.API.Controllers
                     DisplayOrder = category.DisplayOrder,
                 };
 
-                var response = await categoriesServiceCommands.AddCategory(categoryDTO);
+                var response = await categoriesService.AddCategory(categoryDTO);
 
                 TempData["success"] = "Category created successfully";
 
-            return RedirectToAction("GetAllCategories");
+                return RedirectToAction("GetAllCategories");
             }
 
             return View();
@@ -63,22 +60,22 @@ namespace BooksForLess.API.Controllers
 
         public async Task<IActionResult> EditCategory(int id)
         {
-            if(id==null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            var category = await this.categoriesServiceQueries.GetCategoriesById(id);
+            var category = await categoriesService.GetCategoriesById(id);
 
             var response = new Category()
             {
                 Id = category.Id,
                 Name = category.Name,
-                DisplayOrder =category.DisplayOrder,
+                DisplayOrder = category.DisplayOrder,
             };
-           
 
-            if(response == null)
+
+            if (response == null)
             {
                 return NotFound(response);
             }
@@ -98,7 +95,7 @@ namespace BooksForLess.API.Controllers
                     DisplayOrder = category.DisplayOrder,
                 };
 
-                var response = await categoriesServiceCommands.UpdateCategory(categoryDTO);
+                var response = await categoriesService.UpdateCategory(categoryDTO);
 
                 TempData["success"] = "Category updated successfully";
 
@@ -115,7 +112,7 @@ namespace BooksForLess.API.Controllers
                 return NotFound();
             }
 
-            var category = await this.categoriesServiceQueries.GetCategoriesById(id);
+            var category = await categoriesService.GetCategoriesById(id);
 
             var response = new Category()
             {
@@ -138,7 +135,7 @@ namespace BooksForLess.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await categoriesServiceCommands.DeleteCategory(id);
+                var response = await categoriesService.DeleteCategory(id);
 
                 TempData["success"] = "Category deleted successfully";
 

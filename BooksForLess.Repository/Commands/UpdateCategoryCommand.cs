@@ -1,13 +1,11 @@
-﻿using Azure;
-using BooksForLess.Repository.DataContext;
-using BooksForLess.Repository.Entity;
+﻿using BooksForLess.Repository.Entity;
 using BooksForLess.Repository.Interfaces;
 using BooksForLess.Repository.RepositoryDTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace BooksForLess.Repository.Commands
 {
-    public partial class CategeriesRepositoryCommands : ICategoriesRepositoryCommands
+    public partial class CategoriesRepository : ICategoriesRepository
     {
         public async Task<CategoriesResponse> UpdateCategory(Category categories)
         {
@@ -19,7 +17,7 @@ namespace BooksForLess.Repository.Commands
                 return null;
             }
 
-            isIdExisting.Name= categories.Name;
+            isIdExisting.Name = categories.Name;
             isIdExisting.DisplayOrder = categories.DisplayOrder;
 
             response.ResultMessage = "Success!";
