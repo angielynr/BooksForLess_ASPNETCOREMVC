@@ -11,7 +11,7 @@ namespace BooksForLess.Services
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
 
-            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoriesService, CategoriesService>();
 
             return services;

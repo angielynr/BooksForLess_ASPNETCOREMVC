@@ -8,10 +8,10 @@ namespace BooksForLess.Repository.Interfaces
         Task<List<Category>> GetAllCategories();
         Task<AllCategoriesResponse> GetCategoryById(int id);
 
-        Task<CategoriesResponse> AddCategory(Category categories);
+        Task<CustomResponse> AddCategory(Category categories);
 
-        Task<CategoriesResponse> UpdateCategory(Category categories);
-        Task<CategoriesResponse> DeleteCategoryById(int id);
+        Task<CustomResponse> UpdateCategory(Category categories);
+        Task<CustomResponse> DeleteCategoryById(int id);
 
     }
 }

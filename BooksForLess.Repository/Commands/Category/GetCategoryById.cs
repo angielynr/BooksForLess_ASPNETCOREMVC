@@ -16,7 +16,6 @@ namespace BooksForLess.Repository.Commands
             {
                 Name = result.Name,
                 DisplayOrder = result.DisplayOrder,
-                ResultMessage = "Success!"
             };
 
             return response;

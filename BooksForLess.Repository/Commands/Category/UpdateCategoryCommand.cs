@@ -7,9 +7,9 @@ namespace BooksForLess.Repository.Commands
 {
     public partial class CategoriesRepository : ICategoriesRepository
     {
-        public async Task<CategoriesResponse> UpdateCategory(Category categories)
+        public async Task<CustomResponse> UpdateCategory(Category categories)
         {
-            var response = new CategoriesResponse();
+            var response = new CustomResponse();
             var isIdExisting = await this.appDbContext.categories.FirstOrDefaultAsync(c => c.Id == categories.Id);
 
             if (isIdExisting == null)
